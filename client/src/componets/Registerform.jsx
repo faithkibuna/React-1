@@ -1,5 +1,5 @@
 import react from "react";
-function Regesterform() {
+function RegisterForm() {
   return (
     <div>
       <form
@@ -172,4 +172,4 @@ function Regesterform() {
   );
 }
 
-export default Regesterform;
+export default RegisterForm;
