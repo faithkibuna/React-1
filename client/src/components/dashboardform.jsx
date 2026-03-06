@@ -1,5 +1,5 @@
 import react from "react";
-function Dashboard() {
+function DashboardForm() {
   return (
     <div>
       <main class="pb-20">
@@ -90,4 +90,4 @@ function Dashboard() {
   );
 }
 
-export default Dashboard;
+export default DashboardForm;

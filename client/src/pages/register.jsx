@@ -1,7 +1,6 @@
- 
-import Header from "../components/Header.jsx";
-import Footer from "../components/Footer.jsx";
-import RegisterForm from "../components/RegisterForm.jsx";
+import Footer from "../components/footer";
+import Header from "../components/Header";
+import RegisterForm from "../components/Registerform";
 
 function Register() {
   return (

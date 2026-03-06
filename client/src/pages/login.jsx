@@ -1,8 +1,8 @@
-import Header from "../components/Header.jsx";
-import Footer from "../components/Footer.jsx";
-import LoginForm from "../components/LoginForm.jsx";
+import Footer from "../components/footer";
+import Header from "../components/Header";
+import LoginForm from "../components/loginform";
 
-const loginpage = () => {
+function Login() {
   return (
     <>
       <Header />
@@ -10,6 +10,6 @@ const loginpage = () => {
       <Footer />
     </>
   );
-};
+}
 
 export default Login;

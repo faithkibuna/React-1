@@ -1,6 +1,7 @@
-import Header from "../components/Header.jsx";
-import Footer from "../components/Footer.jsx";
-import DashboardForm from "../components/DashboardForm.jsx";
+import DashboardForm from "../components/dashboardform";
+import Footer from "../components/footer";
+import Header from "../components/Header";
+
 
 function Dashboard() {
   return (
