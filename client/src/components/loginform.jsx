@@ -1,41 +1,62 @@
-import react from "react";
+import React, { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import { loginUser } from "../assets/api/api";
+
 function LoginForm() {
+  const [formData, setFormData] = useState({ email: "", password: "" });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setError("");
+
+    try {
+      const data = await loginUser(formData);
+      if (data && data.success) {
+        navigate("/dashboard");
+      } else {
+        setError(data?.message || "Login failed");
+      }
+    } catch (err) {
+      console.error(err);
+      setError("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div>
-      <main class="flex items-center justify-center min-h-screen bg-gray-100 p-4">
-        <div class="w-full max-w-md bg-white p-6 rounded-lg shadow">
-          <h1 class="font-bold text-xl mb-4">Login To Charity Mind</h1>
-          <form class="w-full">
-            <div class="mb-4">
-              <label for="full-name" class="block font-medium mb-1">
-                Full name
+      <main className="flex items-center justify-center min-h-screen bg-gray-100 p-4">
+        <div className="w-full max-w-md bg-white p-6 rounded-lg shadow">
+          <h1 className="font-bold text-xl mb-4">Login To Charity Mind</h1>
+          <form className="w-full" onSubmit={handleLogin}>
+            <div className="mb-4">
+              <label htmlFor="email" className="block font-medium mb-1">
+                Email
               </label>
               <input
-                id="full-name"
-                name="full-name"
-                type="text"
-                placeholder="faith wambui wanjiku"
+                id="email"
+                name="email"
+                type="email"
+                placeholder="you@example.com"
                 required
-                class="w-full border border-gray-300 rounded-lg px-4 py-2"
+                value={formData.email}
+                onChange={handleChange}
+                className="w-full border border-gray-300 rounded-lg px-4 py-2"
               />
             </div>
 
-            <div class="mb-4">
-              <label for="username" class="block font-medium mb-1">
-                Username
-              </label>
-              <input
-                id="username"
-                name="username"
-                type="text"
-                placeholder="faith"
-                required
-                class="w-full border border-gray-300 rounded-lg px-4 py-2"
-              />
-            </div>
-
-            <div class="mb-4">
-              <label for="password" class="block font-medium mb-1">
+            <div className="mb-4">
+              <label htmlFor="password" className="block font-medium mb-1">
                 Password
               </label>
               <input
@@ -44,39 +65,32 @@ function LoginForm() {
                 type="password"
                 placeholder="**********"
                 required
-                class="w-full border border-gray-300 rounded-lg px-4 py-2"
+                value={formData.password}
+                onChange={handleChange}
+                className="w-full border border-gray-300 rounded-lg px-4 py-2"
               />
             </div>
 
-            <div class="mb-4 flex items-center">
-              <input
-                id="remember-me"
-                name="remember-me"
-                type="checkbox"
-                class="mr-2"
-              />
-              <label for="remember-me" class="font-medium">
-                Remember Me
-              </label>
-            </div>
+            {error && <p className="text-red-600 mb-2">{error}</p>}
 
-            <div class="mb-4">
+            <div className="mb-4">
               <button
                 type="submit"
-                class="w-full bg-pink-600 text-white text-xl py-2 rounded-lg"
+                disabled={loading}
+                className="w-full bg-pink-600 text-white text-xl py-2 rounded-lg disabled:opacity-50"
               >
-                Login
+                {loading ? "Logging in..." : "Login"}
               </button>
             </div>
 
-            <p class="text-center mb-2">Don't have an account? Register</p>
+            <p className="text-center mb-2">Don't have an account?</p>
             <div>
-              <a
-                href="register.html"
-                class="block w-full bg-pink-600 text-white text-center py-2 rounded-lg"
+              <Link
+                to="/register"
+                className="block w-full bg-pink-600 text-white text-center py-2 rounded-lg"
               >
                 Register
-              </a>
+              </Link>
             </div>
           </form>
         </div>
