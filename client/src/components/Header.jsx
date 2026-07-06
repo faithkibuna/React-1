@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import react from "react";
 import logo from "../assets/image/logo (3).png";
 function Header() {
@@ -17,16 +18,16 @@ function Header() {
         <div>
           <ul class="flex ml-auto gap-5 text-black">
             <li>
-              <a href="login.html"> login</a>
+              <Link to="/login"> login</Link>
             </li>
             <li>
-              <a href="index.html"> home</a>
+              <Link to="/index"> home</Link>
             </li>
             <li>
-              <a href="register.html"> register </a>
+              <Link to="/register"> register </Link>
             </li>
             <li>
-              <a href="dashboard.html"> dashboard</a>
+              <Link to="/dashboard"> dashboard</Link>
             </li>
           </ul>
         </div>
