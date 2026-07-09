@@ -11,7 +11,7 @@ function Register() {
       <Footer />
 
       <Link to="/login">Login</Link>
-      <br />
+
       <Link to="/dashboard">Dashboard</Link>
     </>
   );

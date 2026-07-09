@@ -1,33 +1,34 @@
+import React from "react";
 import { Link } from "react-router-dom";
-import react from "react";
 import logo from "../assets/image/logo (3).png";
+
 function Header() {
   return (
-    <header class="bg-pink-600">
-      <nav class="flex container mx-auto items-center justify-between flex-col md:flex-row sm:flex-col">
-        <div class="flex items-center gap-2">
-          <img
-            src="assets/image/logo (3).png"
-            class="w-16 h-14 p-1"
-            alt="logo"
-          />
-          <h1 class="text-xl font-bold text-start text-blue-900">
-            charity minds
+    <header className="bg-pink-600">
+      <nav className="flex container mx-auto items-center justify-between flex-col md:flex-row sm:flex-col">
+        <div className="flex items-center gap-2">
+          <img src={logo} className="w-16 h-14 p-1" alt="logo(3).png" />
+
+          <h1 className="text-xl font-bold text-start text-blue-900">
+            Charity Minds
           </h1>
         </div>
+
         <div>
-          <ul class="flex ml-auto gap-5 text-black">
+          <ul className="flex ml-auto gap-5 text-black">
             <li>
-              <Link to="/login"> login</Link>
+              <Link to="/">Home</Link>
+            </li>
+
+            <li>
+              <Link to="/register">Register</Link>
             </li>
             <li>
-              <Link to="/index"> home</Link>
+              <Link to="/login">Login</Link>
             </li>
+
             <li>
-              <Link to="/register"> register </Link>
-            </li>
-            <li>
-              <Link to="/dashboard"> dashboard</Link>
+              <Link to="/dashboard">Dashboard</Link>
             </li>
           </ul>
         </div>
