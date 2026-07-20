@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import DashboardForm from "../components/dashboardform";
 import Footer from "../components/footer";
 import Header from "../components/Header";
+import UserTable from "../components/usertable";
+import StatCards from "../components/statscards";
 
 function Dashboard() {
   return (
