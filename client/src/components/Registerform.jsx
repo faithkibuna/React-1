@@ -40,7 +40,14 @@ function RegisterForm() {
     setError("");
 
     try {
-      const data = await registerUser(formData);
+      const data = await fetch(
+        "https://charity-minds-backend.onrender.com/api/v1/auth/register",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
+        },
+      );
 
       if (data.success) {
         alert("Registration successful! You can now login.");
@@ -65,11 +72,7 @@ function RegisterForm() {
         <h1 className="text-3xl font-bold text-center mb-6">
           Register To Charity Minds
         </h1>
-
-        {error && (
-          <p className="text-red-600 text-center mb-4">{error}</p>
-        )}
-
+        {error && <p className="text-red-600 text-center mb-4">{error}</p>}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
           <div>
             <label htmlFor="firstName" className="block font-medium mb-1">
@@ -105,7 +108,6 @@ function RegisterForm() {
             />
           </div>
         </div>
-
         <div className="mb-4">
           <label htmlFor="email" className="block font-medium mb-1">
             Email
@@ -122,7 +124,6 @@ function RegisterForm() {
             className="w-full border border-gray-300 rounded-lg px-4 py-2"
           />
         </div>
-
         <div className="mb-4">
           <label htmlFor="username" className="block font-medium mb-1">
             Username
@@ -139,7 +140,6 @@ function RegisterForm() {
             className="w-full border border-gray-300 rounded-lg px-4 py-2"
           />
         </div>
-
         <div className="mb-4">
           <label htmlFor="phone" className="block font-medium mb-1">
             Phone Number
@@ -155,7 +155,8 @@ function RegisterForm() {
             required
             className="w-full border border-gray-300 rounded-lg px-4 py-2"
           />
-        </div>        <div className="mb-4">
+        </div>{" "}
+        <div className="mb-4">
           <label htmlFor="dob" className="block font-medium mb-1">
             Date of Birth
           </label>
@@ -170,7 +171,6 @@ function RegisterForm() {
             className="w-full border border-gray-300 rounded-lg px-4 py-2"
           />
         </div>
-
         <div className="mb-4">
           <label htmlFor="gender" className="block font-medium mb-1">
             Gender
@@ -190,7 +190,6 @@ function RegisterForm() {
             <option value="other">Other</option>
           </select>
         </div>
-
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
           <div>
             <label htmlFor="password" className="block font-medium mb-1">
@@ -210,10 +209,7 @@ function RegisterForm() {
           </div>
 
           <div>
-            <label
-              htmlFor="confirmPassword"
-              className="block font-medium mb-1"
-            >
+            <label htmlFor="confirmPassword" className="block font-medium mb-1">
               Confirm Password
             </label>
 
@@ -229,7 +225,6 @@ function RegisterForm() {
             />
           </div>
         </div>
-
         <div className="flex items-center mb-4">
           <input
             type="checkbox"
@@ -241,11 +236,8 @@ function RegisterForm() {
             className="mr-2"
           />
 
-          <label htmlFor="terms">
-            I agree to the Terms and Conditions
-          </label>
+          <label htmlFor="terms">I agree to the Terms and Conditions</label>
         </div>
-
         <button
           type="submit"
           disabled={loading}
@@ -253,7 +245,6 @@ function RegisterForm() {
         >
           {loading ? "Registering..." : "Register"}
         </button>
-
         <div className="text-center mt-4">
           <p>
             Already have an account?{" "}

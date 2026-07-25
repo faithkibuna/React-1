@@ -54,10 +54,7 @@ function LoginForm() {
 
           <form onSubmit={handleLogin}>
             <div className="mb-4">
-              <label
-                htmlFor="email"
-                className="block font-medium mb-1"
-              >
+              <label htmlFor="email" className="block font-medium mb-1">
                 Email
               </label>
 
@@ -74,10 +71,7 @@ function LoginForm() {
             </div>
 
             <div className="mb-4">
-              <label
-                htmlFor="password"
-                className="block font-medium mb-1"
-              >
+              <label htmlFor="password" className="block font-medium mb-1">
                 Password
               </label>
 
@@ -93,9 +87,7 @@ function LoginForm() {
               />
             </div>
 
-            {error && (
-              <p className="text-red-600 mb-2">{error}</p>
-            )}
+            {error && <p className="text-red-600 mb-2">{error}</p>}
 
             <div className="mb-4">
               <button
@@ -107,9 +99,7 @@ function LoginForm() {
               </button>
             </div>
 
-            <p className="text-center mb-2">
-              Don't have an account?
-            </p>
+            <p className="text-center mb-2">Don't have an account?</p>
 
             <Link
               to="/register"
